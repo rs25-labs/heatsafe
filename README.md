@@ -4,7 +4,7 @@
 
 In summer and early fall 2026, Orange County had record heat. School lets out in the afternoon, close to the hottest part of the day, and many students then walk to a bus stop or the train station. A 20-minute walk feels short until it's 105°F with little shade.
 
-HeatSafe OC compares real walking routes by how much of each one is **in shade at the time you'll walk it**, estimates how hot the walk will feel, shows what relief is along the way (water, libraries, cooling centers, parks), and recommends one route. It works in English and Spanish.
+HeatSafe compares real walking routes by how much of each one is **in shade at the time you'll walk it**, estimates how hot the walk will feel, shows what relief is along the way (water, libraries, cooling centers, parks), and recommends one route. It works in English and Spanish.
 
 Built for the 2026 Congressional App Challenge (CA-46).
 
@@ -14,10 +14,10 @@ Built for the 2026 Congressional App Challenge (CA-46).
 The street and sidewalk network comes from OpenStreetMap. To find different routes, we search for the shortest path several times, each time making sunny streets "cost" more (a sun penalty of 0, 2, 5, then 10). A penalty of 0 gives the fastest route; bigger penalties give routes that trade a little distance for more shade. We keep only routes that are really different (less than 80% overlap) and no more than 1.6× as long as the fastest one.
 
 ### 2. Calculating shade
-We built a 1-meter map of how tall everything is: buildings from Overture Maps (92% have measured heights; others use their floor count, or 6 m) and trees from the Meta/WRI canopy height map. For any time of day we calculate where the sun is in the sky. Then, for points every 5 meters along every street, we "walk" from the point toward the sun: if a building or tree is taller than the sun's line of sight, that point is in shade. Points under tree canopy count as shaded too. We treat the ground as flat, since central Santa Ana has very little slope.
+I built a 1-meter map of how tall everything is: buildings from Overture Maps (92% have measured heights; others use their floor count, or 6 m) and trees from the Meta/WRI canopy height map. For any time of day we calculate where the sun is in the sky. Then, for points every 5 meters along every street, we "walk" from the point toward the sun: if a building or tree is taller than the sun's line of sight, that point is in shade. Points under tree canopy count as shaded too. We treat the ground as flat, since central Santa Ana has very little slope.
 
 ### 3. Rating heat exposure
-We get the temperature and humidity for that hour (Open-Meteo) and compute the National Weather Service **heat index**. The NWS says full sun can make it feel up to 15°F hotter, so each route's "feels like" temperature is:
+I get the temperature and humidity for that hour (Open-Meteo) and compute the National Weather Service **heat index**. The NWS says full sun can make it feel up to 15°F hotter, so each route's "feels like" temperature is:
 
 > heat index + 15°F × (fraction of the walk in direct sun)
 
