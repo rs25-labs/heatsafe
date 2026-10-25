@@ -1,0 +1,18 @@
+{
+  "bounds": [
+    -117.9,
+    33.72,
+    -117.83,
+    33.78
+  ],
+  "scene_id": "LC09_L2SP_041036_20260914_02_T1",
+  "platform": "landsat-9",
+  "acquired": "2026-09-14",
+  "min_f": 95.4,
+  "max_f": 125.1,
+  "range_f": [
+    90.0,
+    130.0
+  ],
+  "source_url": "https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2"
+}

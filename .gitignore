@@ -1,0 +1,15 @@
+.env
+data/raw/
+data/cache/
+*.pdf
+node_modules/
+.venv/
+dist/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.env.*
+!.env.example
+.DS_Store
+frontend/public/overlay/
+.venv-runtime/

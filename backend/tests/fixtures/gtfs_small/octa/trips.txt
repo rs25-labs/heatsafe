@@ -1,0 +1,4 @@
+route_id,service_id,trip_id,trip_headsign
+53,WK,t1,Anaheim
+53,WK,t2,Anaheim
+53,SA,t3,Anaheim

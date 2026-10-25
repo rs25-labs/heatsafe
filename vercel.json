@@ -1,0 +1,19 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "cd frontend && npx --yes pnpm@10.33.0 install --frozen-lockfile",
+  "buildCommand": "cd frontend && npx --yes pnpm@10.33.0 run build",
+  "outputDirectory": "frontend/dist",
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 60,
+      "includeFiles": "{backend/heatsafe/**,data/processed/**}",
+      "excludeFiles": "{data/processed/heights_dm.tif,data/processed/overlay/**}"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index"
+    }
+  ]
+}

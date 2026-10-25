@@ -1,0 +1,3 @@
+stop_id,stop_name,stop_lat,stop_lon
+100,Main-10th,33.75400,-117.86760
+200,Santa Ana Blvd-Santiago,33.75100,-117.85700

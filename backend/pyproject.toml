@@ -1,0 +1,53 @@
+[project]
+name = "heatsafe"
+version = "0.1.0"
+description = "HeatSafe OC: find the safest way to walk through extreme heat"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "affine>=2.4",
+    "fastapi>=0.161.1",
+    "geopandas>=1.1",
+    "httpx>=0.28.1",
+    "networkx>=3.7",
+    "numpy>=2.5.4",
+    "osmnx>=2.1.1",
+    "pandas>=3.1.0",
+    "pvlib>=0.16.1",
+    "pydantic-settings>=2.16.1",
+    "pyproj>=3.8.0",
+    "shapely>=2.2.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["heatsafe"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+
+[dependency-groups]
+# Only for building data/processed (scripts/); not deployed.
+data = [
+    "osmium>=4.3.2",
+    "overturemaps>=1.0.2",
+    "pillow>=13.0.0",
+    "planetary-computer>=1.0.0",
+    "pyarrow>=26.0.0",
+    "pystac-client>=0.9.1",
+    "rasterio>=1.5.2",
+]
+# Local server and tests; Vercel runs the app itself.
+dev = [
+    "uvicorn[standard]>=0.54.0",
+    "pytest>=9.1.1",
+    "ruff>=0.17.2",
+]
+
+[tool.uv]
+default-groups = ["dev", "data"]

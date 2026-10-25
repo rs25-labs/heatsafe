@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to use HeatSafe</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+  /* Layout: one readable column, like the app's side panel; steps are a real sequence */
+  :root {
+    --bg: #ffffff;
+    --band: #f7f7f5;
+    --ink: #1a1a1a;
+    --muted: #5c5c57;
+    --rule: #e3e3df;
+    --accent: #1d3557;
+    --accent-ink: #ffffff;
+    --heat-2: #e7a574;
+    --heat-4: #8a3a0b;
+    --font: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141618; --band: #1d2023; --ink: #ecebe7; --muted: #a9a8a2; --rule: #2f3236;
+      --accent: #9db8e0; --accent-ink: #10151c; --heat-2: #e7a574; --heat-4: #f0a36a;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141618; --band: #1d2023; --ink: #ecebe7; --muted: #a9a8a2; --rule: #2f3236;
+    --accent: #9db8e0; --accent-ink: #10151c; --heat-2: #e7a574; --heat-4: #f0a36a;
+    color-scheme: dark;
+  }
+  body {
+    margin: 0;
+    background: var(--bg); color: var(--ink); font-family: var(--font);
+    font-size: 16px; line-height: 1.55; font-variant-numeric: tabular-nums;
+  }
+  .page {
+    max-width: 680px; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 32px 48px;
+    display: flex; flex-direction: column; gap: 32px;
+  }
+  header { display: flex; flex-direction: column; gap: 8px; }
+  .brand { font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: 0.02em; }
+  h1 { margin: 0; font-size: 32px; line-height: 1.15; font-weight: 700; letter-spacing: -0.015em; text-wrap: balance; }
+  h2 { margin: 0; font-size: 18px; font-weight: 700; text-wrap: balance; }
+  p { margin: 0; }
+  .lede { color: var(--muted); max-width: 60ch; }
+  section { display: flex; flex-direction: column; gap: 12px; }
+  .link-box {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
+    background: var(--band); border: 1px solid var(--rule); border-radius: 8px; padding: 12px 16px;
+  }
+  .link-box strong { font-size: 14px; }
+  .link-box a { color: var(--accent); font-weight: 600; word-break: break-all; }
+  ol.steps { margin: 0; padding: 0; list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 14px; }
+  ol.steps li { counter-increment: step; display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; }
+  ol.steps li::before {
+    content: counter(step); width: 28px; height: 28px; border-radius: 50%;
+    background: var(--accent); color: var(--accent-ink); font-weight: 700; font-size: 14px;
+    display: grid; place-items: center;
+  }
+  .ui { font-weight: 600; white-space: nowrap; }
+  .hint { color: var(--muted); font-size: 14px; }
+  ul.plain { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+  .legend { display: inline-flex; align-items: center; gap: 6px; vertical-align: middle; }
+  .legend svg { width: 28px; height: 6px; }
+  .rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+  .message { display: flex; flex-direction: column; gap: 10px; }
+  .message textarea {
+    width: 100%; box-sizing: border-box; min-height: 210px; resize: vertical;
+    font: inherit; font-size: 15px; line-height: 1.5; color: var(--ink);
+    background: var(--band); border: 1px solid var(--rule); border-radius: 8px; padding: 12px 14px;
+  }
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  button {
+    font: inherit; font-weight: 600; min-height: 44px; padding: 0 16px; border-radius: 6px; cursor: pointer;
+    background: var(--accent); color: var(--accent-ink); border: 0;
+  }
+  button:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .status { font-size: 14px; color: var(--muted); }
+  footer { font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <p class="brand">HeatSafe · Central Santa Ana</p>
+    <h1>How to use HeatSafe</h1>
+    <p class="lede">HeatSafe compares walking routes by how much of each one is in shade at the time you'll walk, then recommends the safest one. Here's how to find your way around, and what we'd love to hear from you.</p>
+  </header>
+
+  <div class="link-box">
+    <a id="app-link" href="/">← Back to HeatSafe</a>
+  </div>
+
+  <section aria-labelledby="first-try">
+    <h2 id="first-try">Your first try (about 2 minutes)</h2>
+    <ol class="steps">
+      <li><p>In <span class="ui">From</span>, choose <span class="ui">Orange County School of the Arts</span>. In <span class="ui">To</span>, choose <span class="ui">Santa Ana Regional Transportation Center</span>.</p></li>
+      <li><p>Click <span class="ui">Use demo day</span>. That sets the trip to Thursday, Sep 10, 3:30 PM, a real 93°F afternoon. Then click <span class="ui">Show me</span>.</p></li>
+      <li><p>Look at the map. Each route shows where you'd be
+        <span class="legend"><svg viewBox="0 0 28 6" aria-hidden="true"><line x1="0" y1="3" x2="28" y2="3" stroke="#1d3557" stroke-width="4"/></svg> in shade (navy)</span> and where you'd be
+        <span class="legend"><svg viewBox="0 0 28 6" aria-hidden="true"><line x1="0" y1="3" x2="28" y2="3" stroke="#d1352b" stroke-width="4"/></svg> in direct sun (red)</span>.
+        Hover over a route (or tap it on a phone) to see its time and shade, and click one to choose it. The small round icons are water fountains, parks, libraries and stores along the way.</p></li>
+      <li><p>Compare the route cards on the left. Each shows the walking time, % shaded, minutes in direct sun, and a heat rating: <span class="ui">Low</span>, <span class="ui">Moderate</span>, <span class="ui">High</span> or <span class="ui">Extreme</span>.</p></li>
+      <li><p>Drag the <span class="ui">Leaving at</span> bar at the bottom of the map. The shade on the map and the numbers on the cards change as you go later in the afternoon.</p></li>
+      <li><p>Click <span class="ui">Walk the shadiest route</span>. On a laptop you'll see a 3D view following the walk, with a small map of the whole route in the corner. Use <span class="ui">Pause</span>, drag the slider, or try the <span class="ui">10×</span> / <span class="ui">20×</span> / <span class="ui">40×</span> speeds. Click <span class="ui">Done</span> to go back.</p>
+        <p class="hint">The 3D city takes 10 to 20 seconds to load the first time.</p></li>
+      <li><p>Click <span class="ui">Español</span> at the top right to see the app in Spanish.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="your-own">
+    <h2 id="your-own">Then try a walk of your own</h2>
+    <ul class="plain">
+      <li>Click <span class="ui">Edit trip</span>, then pick places with <span class="ui">Pick on the map</span> or <span class="ui">Search an address</span>.</li>
+      <li>The app covers central Santa Ana only: downtown and the neighborhoods around it. If you pick a place outside that area, the app says so.</li>
+      <li>Leave <span class="ui">Now</span>, or choose <span class="ui">At a set time</span> to try a hot afternoon.</li>
+      <li>Add a note like <em>"carrying groceries"</em> or a bus time under <span class="ui">Need to catch a bus or train</span>.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="good-to-know">
+    <h2 id="good-to-know">Good to know</h2>
+    <ul class="plain">
+      <li>The first visit after a quiet spell can take up to 20 seconds while the server wakes up. You'll see "Waking up the server…". After that it's quick.</li>
+      <li>Ratings are estimates from real weather, building and tree heights, and the sun's position. They aren't measurements.</li>
+      <li>The 3D view only appears on laptops and tablets. On a phone, the map follows the walk instead.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="feedback">
+    <h2 id="feedback">What we'd love to hear</h2>
+    <ul class="plain">
+      <li>Was it clear what to do first? Where did you get stuck or confused?</li>
+      <li>Did the recommended route make sense to you? Would you actually walk it?</li>
+      <li>Was anything on the map or the cards hard to read or understand?</li>
+      <li>How did the walk playback feel: too fast, too slow, choppy?</li>
+      <li>What device and browser did you use? If something broke, a screenshot helps a lot.</li>
+    </ul>
+  </section>
+
+  <footer>HeatSafe is an entry for the 2026 Congressional App Challenge (CA-46).</footer>
+</div>
+</body>
+</html>

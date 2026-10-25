@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #1a1a1a;
+  --color-muted: #5c5c57;
+  --color-subtle: #3d3d39;
+  --color-paper: #ffffff;
+  --color-band: #f7f7f5;
+  --color-rule: #e3e3df;
+  --color-control: #8c8c86;
+  --color-control-soft: #c9c9c4;
+  --color-accent: #1d3557;
+  --color-accent-hover: #0f1e33;
+  --color-route-other: #6b7280;
+  --color-sun: #d1352b;
+  --color-heat-1: #f3d9c2;
+  --color-heat-2: #e7a574;
+  --color-heat-3: #c8692a;
+  --color-heat-4: #8a3a0b;
+  --color-error: #9b1c1c;
+  --font-sans: "Public Sans Variable", system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Place icons along the routes (MapLibre HTML markers) */
+.heatsafe-place {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 9999px;
+  border: 2px solid var(--color-accent);
+  background: var(--color-paper);
+  color: var(--color-accent);
+  cursor: pointer;
+}
+.heatsafe-place svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.heatsafe-place:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+.maplibregl-popup-content {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-ink);
+  border-radius: 6px;
+  padding: 8px 12px;
+}
