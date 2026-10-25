@@ -1,6 +1,6 @@
 # HeatSafe OC
 
-**Find the safest way to walk through extreme heat in central Santa Ana.**
+**Find the safest way to walk through extreme heat.**
 
 In summer and early fall 2026, Orange County had record heat. School lets out in the afternoon, close to the hottest part of the day, and many students then walk to a bus stop or the train station. A 20-minute walk feels short until it's 105°F with little shade.
 
